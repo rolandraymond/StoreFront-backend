@@ -10,7 +10,9 @@
     "format": "prettier --write src/**/*.ts && npm run lint",
     "lint": "eslint src/**/*.ts --fix",
     "jasmine": "jasmine",
-    "test": "npm run build && npm run jasmine"
+    "test": "npm run build && npm run jasmine",
+    "create_table": "db-migrate up",
+    "delele_table": "db-migrate down"
   },
   "repository": {
     "type": "git",
@@ -24,7 +26,10 @@
   },
   "homepage": "https://github.com/rolandraymond/StoreFront-backend#readme",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/jasmine": "^4.3.0",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/morgan": "^1.9.3",
     "@types/pg": "^8.6.5",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
@@ -42,9 +47,16 @@
   },
   "dependencies": {
     "@types/express": "^4.17.13",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
+    "db-migrate": "^0.11.13",
+    "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
+    "express-rate-limit": "^6.6.0",
+    "helmet": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
     "pg": "^8.8.0"
   }
 }

@@ -1,0 +1,35 @@
+{
+    "defaultEnv": {
+        "ENV": "Convert_DB"
+    },
+    "test": {
+        "driver": "pg",
+        "host": {
+            "ENV": "postgres_Host"
+        },
+        "database": {
+            "ENV": "POSTGRES_DB"
+        },
+        "user": {
+            "ENV": "POSTGRES_USER"
+        },
+        "password": {
+            "ENV": "POSTGRES_PASSWORD"
+        }
+    },
+    "dev": {
+        "driver": "pg",
+        "host": {
+            "ENV": "postgres_Host"
+        },
+        "database": {
+            "ENV": "postgres_DB_Ecommerce"
+        },
+        "user": {
+            "ENV": "POSTGRES_USER"
+        },
+        "password": {
+            "ENV": "POSTGRES_PASSWORD"
+        }
+    }
+}
