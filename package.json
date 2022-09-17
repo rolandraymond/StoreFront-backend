@@ -9,10 +9,10 @@
     "start": "npm run build && npm run restart",
     "format": "prettier --write src/**/*.ts && npm run lint",
     "lint": "eslint src/**/*.ts --fix",
-    "jasmine": "jasmine",
-    "test": "npm run build && npm run jasmine",
-    "create_table": "db-migrate up",
-    "delele_table": "db-migrate down"
+    "jasminetest": "npm run build && jasmine",
+    "test": "set Convert_DB=test&& tsc && db-migrate up  --ENV test && jasmine && db-migrate reset -C4",
+    "createTable": "db-migrate up -c3",
+    "deleteTable": "db-migrate down -c3"
   },
   "repository": {
     "type": "git",

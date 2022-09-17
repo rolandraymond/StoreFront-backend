@@ -1,28 +1,81 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.create = void 0;
+exports.deleteByid = exports.updatebyId = exports.showorder = exports.userindex = exports.create = void 0;
+const express_1 = __importDefault(require("express"));
 const orders_1 = require("../models/orders");
-const listor = new orders_1.listorder;
-const create = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const orderlist = new orders_1.listorder();
+const create = async (req, res, next) => {
     try {
-        const user = yield listor.create(req.body);
+        const order = await orderlist.create(req.body);
         res.json({
-            status: "success",
-            message: "create data",
-            data: Object.assign({}, user)
+            status: 'success',
+            message: 'create data',
+            data: Object.assign({}, order),
         });
     }
     catch (error) {
         next(error);
     }
-});
+};
 exports.create = create;
+const routes = express_1.default.Router();
+routes.post('/createOrder', exports.create);
+const index = async (_req, res) => {
+    const getallusers = await orderlist.index();
+    res.json(getallusers);
+};
+const userindex = (app) => {
+    app.get('/allorders', index);
+};
+exports.userindex = userindex;
+const showBYid = async (req, res, next) => {
+    try {
+        const show = await orderlist.show(req.params.id);
+        console.log(show);
+        res.json({
+            status: 'success',
+            data: show,
+            message: 'its work ',
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+};
+const showorder = (app) => {
+    app.get('/getorderByid/:id', showBYid);
+};
+exports.showorder = showorder;
+const updateorder = async (req, res, next) => {
+    try {
+        const updatethisusers = await orderlist.update(req.body);
+        res.json({
+            status: 'success',
+            data: updatethisusers,
+            message: 'its work ',
+        });
+    }
+    catch (error) {
+        next(error);
+    }
+};
+const updatebyId = (app) => {
+    app.patch('/updateorder', updateorder);
+};
+exports.updatebyId = updatebyId;
+const deleteorder = async (req, res) => {
+    const deleteUser = await orderlist.deleteByid(req.params.id);
+    res.json({
+        status: 'success',
+        data: deleteUser,
+        message: 'its work ',
+    });
+};
+const deleteByid = (app) => {
+    app.get('/deleteorderByid/name', deleteorder);
+};
+exports.deleteByid = deleteByid;
+exports.default = routes;

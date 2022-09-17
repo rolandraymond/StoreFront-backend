@@ -2,12 +2,14 @@ import client from '../DataBase';
 
 export type prodact = {
   product_id?: number;
-  price: string;
+  price: number;
   name: string;
   seller: string;
 };
 
 export class prodactlist {
+
+  // get all product 
   async getall(): Promise<prodact[]> {
     try {
       const connect = await client.connect();
@@ -19,7 +21,9 @@ export class prodactlist {
       throw new Error(`something wrong ${err}`);
     }
   }
-  async getprodauctByid(name: string): Promise<prodact> {
+
+  // get prorduct by name 
+  async getprodauctByname(name: string): Promise<prodact> {
     try {
       const connect = await client.connect();
       const sql = 'SELECT * FROM products WHERE name=$1';
@@ -44,7 +48,7 @@ export class prodactlist {
       );
     }
   }
-
+  // update  data of product
   async update(p: prodact): Promise<prodact> {
     try {
       const connect = await client.connect();
@@ -61,11 +65,11 @@ export class prodactlist {
       throw new Error(`unable to update : ${err}`);
     }
   }
-
-  async deleteByid(name: string): Promise<prodact> {
+  // delete products by name 
+  async deleteByname(name: string): Promise<prodact> {
     try {
       const connect = await client.connect();
-      const sql = `DELETE FROM products WHERE id=$1 RETURNING name `;
+      const sql = `DELETE FROM products WHERE name=$1 RETURNING name `;
       const result = await connect.query(sql, [name]);
       connect.release();
       return result.rows[0];

@@ -2,7 +2,7 @@ import client from '../DataBase';
 import bcrypt from 'bcrypt';
 import config from '../config';
 
-const hashPassword = (password: string) => {
+export const hashPassword = (password: string) => {
   const hashround = parseInt(config.hashround as string);
   return bcrypt.hashSync(`${password}${config.crypt_pass}`, hashround);
 };
@@ -16,6 +16,7 @@ export type clients = {
 };
 // select users
 export class userlist {
+
   async index(): Promise<clients[]> {
     try {
       const connect = await client.connect();
