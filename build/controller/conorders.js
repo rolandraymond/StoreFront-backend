@@ -3,9 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteByid = exports.updatebyId = exports.showorder = exports.userindex = exports.create = void 0;
+exports.deleteByid = exports.updatebyId = exports.showorder = exports.orderindex = exports.routes = exports.create = void 0;
 const express_1 = __importDefault(require("express"));
-const orders_1 = require("../models/orders");
+const orders_1 = require("../modeles/orders");
+//create orders by router express 
 const orderlist = new orders_1.listorder();
 const create = async (req, res, next) => {
     try {
@@ -21,16 +22,20 @@ const create = async (req, res, next) => {
     }
 };
 exports.create = create;
-const routes = express_1.default.Router();
-routes.post('/createOrder', exports.create);
+//  http://localhost:3000/createOrders
+exports.routes = express_1.default.Router();
+exports.routes.post('/createOrder', exports.create);
+// get all  orders by index modles 
 const index = async (_req, res) => {
-    const getallusers = await orderlist.index();
-    res.json(getallusers);
+    const getallorders = await orderlist.index();
+    res.json(getallorders);
 };
-const userindex = (app) => {
+//  http://localhost:3000/allorders
+const orderindex = (app) => {
     app.get('/allorders', index);
 };
-exports.userindex = userindex;
+exports.orderindex = orderindex;
+// get order by id useing showByid
 const showBYid = async (req, res, next) => {
     try {
         const show = await orderlist.show(req.params.id);
@@ -45,16 +50,18 @@ const showBYid = async (req, res, next) => {
         next(error);
     }
 };
+//  http://localhost:3000/getorderByid/:id
 const showorder = (app) => {
     app.get('/getorderByid/:id', showBYid);
 };
 exports.showorder = showorder;
+// update order by useing updateorder
 const updateorder = async (req, res, next) => {
     try {
-        const updatethisusers = await orderlist.update(req.body);
+        const updatethisorder = await orderlist.update(req.body);
         res.json({
             status: 'success',
-            data: updatethisusers,
+            data: updatethisorder,
             message: 'its work ',
         });
     }
@@ -62,20 +69,22 @@ const updateorder = async (req, res, next) => {
         next(error);
     }
 };
+//  http://localhost:3000/updateorder
 const updatebyId = (app) => {
     app.patch('/updateorder', updateorder);
 };
 exports.updatebyId = updatebyId;
+// delete order by id 
 const deleteorder = async (req, res) => {
-    const deleteUser = await orderlist.deleteByid(req.params.id);
+    const orderdelete = await orderlist.deleteByid(req.params.id);
     res.json({
         status: 'success',
-        data: deleteUser,
+        data: orderdelete,
         message: 'its work ',
     });
 };
+//  http://localhost:3000/deleteorderByid/:id
 const deleteByid = (app) => {
-    app.get('/deleteorderByid/name', deleteorder);
+    app.get('/deleteorderByid/:id', deleteorder);
 };
 exports.deleteByid = deleteByid;
-exports.default = routes;

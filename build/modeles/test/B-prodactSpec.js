@@ -49,7 +49,7 @@ describe("product  list function", () => {
         });
     });
     it('delete user by user id using id method', async () => {
-        dataofproduct.deleteByname("tool");
+        await dataofproduct.deleteByname("tool");
         const result = await dataofproduct.getall();
         expect(result).toEqual([]);
     });

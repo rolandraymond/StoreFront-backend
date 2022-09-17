@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.prodactlist = void 0;
 const DataBase_1 = __importDefault(require("../DataBase"));
 class prodactlist {
+    // get all product 
     async getall() {
         try {
             const connect = await DataBase_1.default.connect();
@@ -18,6 +19,7 @@ class prodactlist {
             throw new Error(`something wrong ${err}`);
         }
     }
+    // get prorduct by name 
     async getprodauctByname(name) {
         try {
             const connect = await DataBase_1.default.connect();
@@ -43,6 +45,7 @@ class prodactlist {
             throw new Error(`unable to create  (${p.name}) : ${err.message}`);
         }
     }
+    // update  data of product
     async update(p) {
         try {
             const connect = await DataBase_1.default.connect();
@@ -60,6 +63,7 @@ class prodactlist {
             throw new Error(`unable to update : ${err}`);
         }
     }
+    // delete products by name 
     async deleteByname(name) {
         try {
             const connect = await DataBase_1.default.connect();

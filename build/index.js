@@ -28,12 +28,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const conUsers_1 = __importDefault(require("./controller/conUsers"));
-const conorders_1 = __importDefault(require("./controller/conorders"));
+const orderroutes = __importStar(require("./controller/conorders"));
 const productroutes = __importStar(require("./controller/conproducts"));
 // config server
 const port = 3000;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+//  http://localhost:3000/createUsers  user diffrant way to create user
 app.use('/', conUsers_1.default.routes);
 app.post('/', (req, res) => {
     res.json({
@@ -41,18 +42,39 @@ app.post('/', (req, res) => {
         data: req.body,
     });
 });
+// http://localhost:3000/allusers
 conUsers_1.default.userindex(app);
+// http://localhost:3000/getuserByid/:id
 conUsers_1.default.showuser(app);
+// http://localhost:3000/deleteUserByid/:id
 conUsers_1.default.deleteByid(app);
+//http://localhost:3000/updateuser
 conUsers_1.default.updatebyId(app);
+//  http://localhost:3000/signin
 conUsers_1.default.sgin_user(app);
+/*     ------------------------------------   products routes ----------------------------------  */
+// create product http://localhost:3000/createproduct
+productroutes.createproduct(app);
+// get all products  http://localhost:3000/allproducts
+productroutes.prodcutindex(app);
+// get specifically by name  http://localhost:3000/getproductByname/name 
+productroutes.showproduct(app);
+// update  data of product by name http://localhost:3000/updateproduct
+productroutes.updatebyname(app);
+// delete product by name http://localhost:3000/deleteproductByid/:name
+productroutes.deleteProductByname(app);
 app.listen(port, () => {
     console.log(`listen port ${port}`);
 });
-// create orders http://localhost:3000/createorder
-app.use('/', conorders_1.default);
-// create product http://localhost:3000/createproduct
-productroutes.createproduct(app);
-// delete product by name http://localhost:3000//deleteproductByid/:name
-productroutes.deleteByid(app);
+/*     ------------------------------------   orders routes ----------------------------------  */
+// create orders http://localhost:3000/createOrder
+app.use('/', orderroutes.routes);
+//  http://localhost:3000/allorders
+orderroutes.orderindex(app);
+//  http://localhost:3000/getorderByid/:id
+orderroutes.showorder(app);
+//  http://localhost:3000/updateorder
+orderroutes.updatebyId(app);
+//  http://localhost:3000/deleteorderByid/:id
+orderroutes.deleteByid(app);
 exports.default = app;
