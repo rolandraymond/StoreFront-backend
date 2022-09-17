@@ -32,24 +32,16 @@
 
 test project
 
-```
-npm run test
-```
+`npm run test`
 
 run server
 
-```
-npm run start
-```
+`npm run start`
 
 ## create tables
 
-```
-npm run db-migrate  up -c3 OR npm run createTable
-```
+`npm run db-migrate up -c3 OR npm run createTable`
 
 ## delete tables
 
-```
-npm run db-migrate down -c3 OR npm run deleteTable
-```
+`npm run db-migrate down -c3 OR npm run deleteTable`
