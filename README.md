@@ -42,13 +42,13 @@ run server
 npm run start
 ```
 
-# create tables
+## create tables
 
 ```
 npm run db-migrate  up -c3 OR npm run createTable
 ```
 
-# delete tables
+## delete tables
 
 ```
 npm run db-migrate down -c3 OR npm run deleteTable
