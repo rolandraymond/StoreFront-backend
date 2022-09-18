@@ -30,6 +30,7 @@ const express_1 = __importDefault(require("express"));
 const conUsers_1 = __importDefault(require("./controller/conUsers"));
 const orderroutes = __importStar(require("./controller/conorders"));
 const productroutes = __importStar(require("./controller/conproducts"));
+const OrdersProductsroutes = __importStar(require("./controller/conOrdersProducts"));
 // config server
 const port = 3000;
 const app = (0, express_1.default)();
@@ -77,4 +78,15 @@ orderroutes.showorder(app);
 orderroutes.updatebyId(app);
 //  http://localhost:3000/deleteorderByid/:id
 orderroutes.deleteByid(app);
+/*     ------------------------------------   OrdersProducts routes ----------------------------------  */
+// create product http://localhost:3000/createOrdersProducts
+OrdersProductsroutes.createproduct(app);
+// http://localhost:3000/allproducts
+OrdersProductsroutes.prodcutindex(app);
+// http://localhost:3000/getOrdersProducts/:id 
+OrdersProductsroutes.showproduct(app);
+// http://localhost:3000/updateOrdersProducts
+OrdersProductsroutes.updatebyId(app);
+// http://localhost:3000/deleteOrdersProductsByid/:id
+OrdersProductsroutes.deleteProductByid(app);
 exports.default = app;

@@ -222,21 +222,17 @@ message: "its work "
 
 ```
 Request Data: {
-	time: Sting ,
-	users_id : Number,
-	quantity: 	Number,
-	product_id:Number
+
+"users_id": Number,
+"status": String,
 		}
 
 Response Body: {
 	"status": "success",
 	"message": "create data",
 	"data": {
-		"order_id":   Number,
-		"time":       Number,
-		"users_id":   Number,
-		"quantity":   Number,
-		"product_id": Number
+	"users_id": Number,
+	"status": String,
 	}
 }
 ```
@@ -250,11 +246,8 @@ Response Body: {
 "status": "success",
 "message": "create data",
 "data": {
-"order_id": Number,
-"time": Number,
 "users_id": Number,
-"quantity": Number,
-"product_id": Number
+"status": String,
 }
 }
 ```
@@ -268,11 +261,8 @@ Response Body: {
 "status": "success",
 "message": "create data",
 "data": {
-"order_id": Number,
-"time": Number,
 "users_id": Number,
-"quantity": Number,
-"product_id": Number
+"status": String,
 }
 }
 ```
@@ -283,26 +273,21 @@ Response Body: {
 
 ```
 Request Data: {
-time: Sting ,
-users_id : Number,
-quantity: Number,
-product_id:Number
+"users_id": Number,
+"status": String,
 }
 
 Response Body: {
 "status": "success",
 "message": "create data",
 "data": {
-"order_id": Number,
-"time": Number,
 "users_id": Number,
-"quantity": Number,
-"product_id": Number
+"status": String,
 }
 }
 ```
 
-### Delet Orders By ID
+### Delete Orders By ID
 
 `GET` // http://localhost:3000/deleteorderByid/:id
 
@@ -311,11 +296,98 @@ Response Body: {
 "status": "success",
 "message": "create data",
 "data": {
-"order_id": Number,
-"time": Number,
 "users_id": Number,
-"quantity": Number,
-"product_id": Number
+"status": String,
+}
+}
+```
+
+## Orders_products
+
+`POST` // create product http://localhost:3000/createOrdersProducts
+
+```
+Request Data: {
+order_id : Number,
+quantity: 	Number,
+product_id:Number
+	}
+Response Body: {
+"status": "success",
+"message": "create data",
+"data": {
+order_id : Number,
+quantity: 	Number,
+product_id:Number
+	}
+}
+```
+
+### get all data from Orders-Products TABLE
+
+GET // http://localhost:3000/allproducts
+
+```
+Response Body: {
+"status": "success",
+"message": "create data",
+"data": {
+order_id : Number,
+quantity: 	Number,
+product_id:Number
+}}
+```
+
+### GEt Data By ID
+
+GET // http://localhost:3000/getOrdersProducts/:id
+
+```
+Response Body: {
+"status": "success",
+"message": "create data",
+"data": {
+order_id : Number,
+quantity: 	Number,
+product_id:Number
+}
+}
+```
+
+### Update BY id
+
+`PATSH` // http://localhost:3000/updateOrdersProducts
+
+```
+Request Data: {
+order_id : Number,
+quantity: 	Number,
+product_id:Number
+}
+
+Response Body: {
+"status": "success",
+"message": "create data",
+"data": {
+order_id : Number,
+quantity: 	Number,
+product_id:Number
+}
+}
+```
+
+### Delete By ID
+
+`GET` // http://localhost:3000/deleteOrdersProductsByid/:id
+
+```
+Response Body: {
+"status": "success",
+"message": "create data",
+"data": {
+order_id : Number,
+quantity: 	Number,
+product_id:Number
 }
 }
 ```

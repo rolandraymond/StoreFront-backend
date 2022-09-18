@@ -2,7 +2,7 @@ import express from 'express';
 import conUsers from './controller/conUsers';
 import * as orderroutes from './controller/conorders';
 import * as productroutes from './controller/conproducts';
-
+import * as OrdersProductsroutes from './controller/conOrdersProducts'
 // config server
 
 const port = 3000;
@@ -73,6 +73,22 @@ orderroutes.updatebyId(app);
 //  http://localhost:3000/deleteorderByid/:id
 orderroutes.deleteByid(app);
 
+/*     ------------------------------------   OrdersProducts routes ----------------------------------  */
+
+// create product http://localhost:3000/createOrdersProducts
+OrdersProductsroutes.createproduct(app)
+
+// http://localhost:3000/allproducts
+OrdersProductsroutes.prodcutindex(app)
+
+// http://localhost:3000/getOrdersProducts/:id 
+OrdersProductsroutes.showproduct(app)
+
+// http://localhost:3000/updateOrdersProducts
+OrdersProductsroutes.updatebyId(app)
+
+// http://localhost:3000/deleteOrdersProductsByid/:id
+OrdersProductsroutes.deleteProductByid(app)
 
 
 export default app;

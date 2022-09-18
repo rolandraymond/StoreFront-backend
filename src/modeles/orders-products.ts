@@ -1,15 +1,18 @@
-import client from '../DataBase';
+import client from "../DataBase"
 
-export type orders = {
-    order_id?: number;
-    users_id: number
-    status: string;
-};
-export class listorder {
-    async index(): Promise<orders[]> {
+
+export type OP = {
+    id?: number,
+    quantity: number,
+    product_id: number,
+    order_id: number
+}
+
+export class OrdersProductsList {
+    async index(): Promise<OP[]> {
         try {
             const connect = await client.connect();
-            const sql = 'SELECT * FROM orders ';
+            const sql = 'SELECT * FROM orders_products ';
             const result = await connect.query(sql);
             connect.release();
             return result.rows;
@@ -17,11 +20,12 @@ export class listorder {
             throw new Error(`something wrong ${err}`);
         }
     }
-    async show(order_id: string): Promise<orders> {
+
+    async show(id: string): Promise<OP> {
         try {
-            const sql = 'SELECT * from orders where id=($1)';
+            const sql = 'SELECT * from orders_products where id=($1)';
             const connect = await client.connect();
-            const result = await connect.query(sql, [order_id]);
+            const result = await connect.query(sql, [id]);
             connect.release();
 
             return result.rows[0];
@@ -29,30 +33,32 @@ export class listorder {
             throw new Error(`Could not find id Error: ${err}`);
         }
     }
-    async create(order: orders): Promise<orders> {
+    async create(OP: OP): Promise<OP> {
         try {
-            const sql = `INSERT INTO orders (status, users_id) values($1, $2 )  RETURNING *`;
+            const sql = `INSERT INTO orders (order_id, product_id , quantity ) values($1, $2 , $3 )  RETURNING *`;
             const conn = await client.connect();
             const result = await conn.query(sql, [
-                order.status,
-                order.users_id
+                OP.order_id,
+                OP.product_id,
+                OP.quantity
             ]);
             conn.release();
             return result.rows[0];
         } catch (err) {
             throw new Error(
-                `unable to create  (${order.status}) : ${(err as Error).message}`
+                `unable to create  (${OP.id}) : ${(err as Error).message}`
             );
         }
     }
-    async update(order: orders): Promise<orders> {
+    async update(OP: OP): Promise<OP> {
         try {
             const connect = await client.connect();
-            const sql = `UPDATE orders SET  users_id=$1 , status=$2 WHERE 
-             user_id=$1 RETURNING *`;
+            const sql = `UPDATE OP SET  order_id=$1 , product_id=$2 , quantity=$3 WHERE 
+            order_id=$1 RETURNING *`;
             const result = await connect.query(sql, [
-                order.users_id,
-                order.status
+                OP.order_id,
+                OP.product_id,
+                OP.quantity
 
             ]);
             connect.release();
@@ -61,15 +67,18 @@ export class listorder {
             throw new Error(`unable to update : ${err}`);
         }
     }
-    async deleteByid(order_id: string): Promise<orders> {
+    async deleteByid(id: string): Promise<OP> {
         try {
             const connect = await client.connect();
-            const sql = `DELETE FROM orders WHERE order_id=$1 RETURNING product_id `;
-            const result = await connect.query(sql, [order_id]);
+            const sql = `DELETE FROM orders_proudcts WHERE id=$1 RETURNING * `;
+            const result = await connect.query(sql, [id]);
             connect.release();
             return result.rows[0];
         } catch (err) {
             throw new Error(`unable to delete by id   : ${err}`);
         }
     }
+
 }
+
+
