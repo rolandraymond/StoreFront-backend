@@ -69,21 +69,18 @@ Response Body:{
 `GET` // http://localhost:3000/getuserByid/:id
 
 ```
-
-
-
-		Response Body:{
-		"status": "success",
-		"message": "its work",
-		"data": {
-		"id": Number,
-		"user_name": String,
-		"first_name":String,
-		"last_name": String,
-		"password": String,
-		"email": String
-		}
-		}
+	Response Body:{
+	"status": "success",
+	"message": "its work",
+	"data": {
+	"id": Number,
+	"user_name": String,
+	"first_name":String,
+	"last_name": String,
+	"password": String,
+	"email": String
+	}
+	}
 ```
 
 ### Update User By ID
@@ -91,14 +88,14 @@ Response Body:{
 `PATSH` //http://localhost:3000/updateuser
 
 ```
-		Request Data: {
-				"id":  Number
-			 "user_name":srting,
-			"first_name":srting,
-			"last_name": srting,
-			"password":  srting,
-			"email":     srting
-			 }
+Request Data: {
+		"id":  Number
+		"user_name":srting,
+	"first_name":srting,
+	"last_name": srting,
+	"password":  srting,
+	"email":     srting
+		}
 
 Response Body:{
 		"status": "success",
@@ -190,11 +187,11 @@ Response Body: {
 ```
 Request Data:{
 
-    	"name":String,
-    	"price": String,
-    	"seller":String,
-    	"product_id":Number
-    	}
+"name":String,
+"price": String,
+"seller":String,
+"product_id":Number
+}
 
 Response Body: {
 "status": "success",
@@ -244,7 +241,6 @@ Response Body: {
 		"product_id": Number
 	}
 }
-
 ```
 
 ### Get All Orders
