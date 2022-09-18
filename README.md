@@ -32,7 +32,6 @@
 
 test project
 
-<<<<<<< HEAD
 `npm run test`
 
 run server
@@ -59,26 +58,4 @@ First, create a .env file with all the required environment variables:
  BCRYPT_pass=secret_password
  round_hash=10
  token_secret=users_secret_token
-=======
-```
-npm run test
-```
-
-run server
-
-```
-npm run start
-```
-
-# create tables
-
-```
-npm run db-migrate  up -c3 OR npm run createTable
-```
-
-# delete tables
-
-```
-npm run db-migrate down -c3 OR npm run deleteTable
->>>>>>> ce6957263560a1e52fbecd68783842ef20f5ecf4
 ```
