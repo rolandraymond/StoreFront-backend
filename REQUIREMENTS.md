@@ -4,7 +4,7 @@
 
 ### Log_in
 
-`POST ` // http://localhost:3000/signin
+`POST` // http://localhost:3000/signin
 
 ```
 Request Data:{"user_name":string , "passsword":string}
@@ -25,7 +25,7 @@ Request Data:{"user_name":string , "passsword":string}
 
 ### user_create
 
-`POST `// http://localhost:3000/createUsers
+`POST` // http://localhost:3000/createUsers
 
 ```
 Request Data: { "user_name":srting,
@@ -50,7 +50,7 @@ Response Body:{
 
 ### Users_list
 
-`GET ` // http://localhost:3000/allusers
+`GET` // http://localhost:3000/allusers
 
 ```
  Response Body:[{
@@ -66,7 +66,7 @@ Response Body:{
 
 ### Get user User By ID
 
-`GET ` // http://localhost:3000/getuserByid/:id
+`GET` // http://localhost:3000/getuserByid/:id
 
 ```
 
@@ -88,7 +88,7 @@ Response Body:{
 
 ### Update User By ID
 
-`PATSH ` //http://localhost:3000/updateuser
+`PATSH` //http://localhost:3000/updateuser
 
 ```
 		Request Data: {
@@ -116,7 +116,7 @@ Response Body:{
 
 ### Delete user by ID
 
-`GET ` // http://localhost:3000/deleteUserByid/:id
+`GET` // http://localhost:3000/deleteUserByid/:id
 
 ```
 Response Body:{
@@ -130,7 +130,7 @@ message: "its work"
 
 ### create product
 
-`POST ` // http://localhost:3000/createproduct
+`POST` // http://localhost:3000/createproduct
 
 ```
 		Request Data:{
@@ -155,7 +155,7 @@ message: "its work"
 
 ### Get All products
 
-`GET ` // http://localhost:3000/allproducts
+`GET` // http://localhost:3000/allproducts
 
 ```
     Response Body:	{
@@ -169,7 +169,7 @@ message: "its work"
 
 ### GET Product BY Name
 
-`GET ` // http://localhost:3000/getproductByname/:name
+`GET` // http://localhost:3000/getproductByname/:name
 
 ```
 Response Body: {
@@ -185,7 +185,7 @@ Response Body: {
 
 ### Update Products
 
-`PATSH `// http://localhost:3000/updateproduct
+`PATSH` // http://localhost:3000/updateproduct
 
 ```
 Request Data:{
@@ -209,7 +209,7 @@ Response Body: {
 
 ### Delete products By Name
 
-`GET ` // http://localhost:3000/deleteproductByname/:name
+`GET` // http://localhost:3000/deleteproductByname/:name
 
 ```
 Response Body: {
@@ -223,35 +223,35 @@ message: "its work "
 
 ### Ceate order
 
-`POST `// http://localhost:3000/createOrder
+`POST` // http://localhost:3000/createOrder
 
 ```
 Request Data: {
-				time: Sting ,
-				users_id : Number,
-				quantity: 	Number,
-				product_id:Number
-				 }
+	time: Sting ,
+	users_id : Number,
+	quantity: 	Number,
+	product_id:Number
+		}
 
-	Response Body: {
-				"status": "success",
-				"message": "create data",
-				"data": {
-					"order_id":   Number,
-					"time":       Number,
-					"users_id":   Number,
-					"quantity":   Number,
-					"product_id": Number
-				}
+Response Body: {
+	"status": "success",
+	"message": "create data",
+	"data": {
+		"order_id":   Number,
+		"time":       Number,
+		"users_id":   Number,
+		"quantity":   Number,
+		"product_id": Number
+	}
 }
 
 ```
 
 ### Get All Orders
 
-```
-`GET `// http://localhost:3000/allorders
+`GET` // http://localhost:3000/allorders
 
+```
 Response Body: {
 "status": "success",
 "message": "create data",
@@ -267,7 +267,7 @@ Response Body: {
 
 ### Get Order By ID Useing ShowByid
 
-`GET `// http://localhost:3000/getorderByid/:id
+`GET` // http://localhost:3000/getorderByid/:id
 
 ```
 Response Body: {
