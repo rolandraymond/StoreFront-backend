@@ -46,7 +46,7 @@ run server
 
 `npm run db-migrate down -c3 OR npm run deleteTable`
 
-First, create a .env file with all the required environment variables:
+First, create a `.env` file with all the required environment variables:
 
 ```
  postgres_Host=localhost
