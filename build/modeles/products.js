@@ -23,13 +23,13 @@ class prodactlist {
     async getprodauctByname(name) {
         try {
             const connect = await DataBase_1.default.connect();
-            const sql = 'SELECT * FROM products WHERE name=$1';
+            const sql = `SELECT * FROM products WHERE name= $1 `;
             const result = await connect.query(sql, [name]);
             connect.release();
             return result.rows[0];
         }
         catch (error) {
-            throw new Error(`unable to get id ${error}`);
+            throw new Error(`unable to get name ${error}`);
         }
     }
     // create users
@@ -49,7 +49,7 @@ class prodactlist {
     async update(p) {
         try {
             const connect = await DataBase_1.default.connect();
-            const sql = `UPDATE products SET name=$1 , price=$2 , product_id=$3 , seller=$4 `;
+            const sql = `UPDATE products SET name=$1 , price=$2 , product_id=$3 , seller=$4 WHERE  product_id=$3   RETURNING * `;
             const result = await connect.query(sql, [
                 p.name,
                 p.price,

@@ -19,7 +19,7 @@ const create = async (req, res, next) => {
 exports.create = create;
 // create product http://localhost:3000/createproduct
 const createproduct = (app) => {
-    app.get('/createproduct', exports.create);
+    app.post('/createproduct', exports.create);
 };
 exports.createproduct = createproduct;
 // get all prouducts by index routes
@@ -35,8 +35,8 @@ exports.prodcutindex = prodcutindex;
 //  get products by name 
 const showBYname = async (req, res, next) => {
     try {
-        const show = await listofproduct.getprodauctByname(req.params.id);
-        console.log(show);
+        const show = await listofproduct.getprodauctByname(req.params.name);
+        console.log(req.params.name);
         res.json({
             status: 'success',
             data: show,
@@ -47,7 +47,7 @@ const showBYname = async (req, res, next) => {
         next(error);
     }
 };
-// http://localhost:3000/getproductByname/name 
+// http://localhost:3000/getproductByname/:name 
 const showproduct = (app) => {
     app.get('/getproductByname/:name', showBYname);
 };
@@ -73,7 +73,7 @@ const updatebyname = (app) => {
 exports.updatebyname = updatebyname;
 // delete products by name 
 const deleteproduct = async (req, res) => {
-    const deleteproductdata = await listofproduct.deleteByname(req.params.id);
+    const deleteproductdata = await listofproduct.deleteByname(req.params.name);
     res.json({
         status: 'success',
         data: deleteproductdata,

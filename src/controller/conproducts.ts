@@ -21,7 +21,7 @@ export const create = async (
 };
 // create product http://localhost:3000/createproduct
 export const createproduct = (app: Application) => {
-    app.get('/createproduct', create);
+    app.post('/createproduct', create);
 };
 // get all prouducts by index routes
 const index = async (_req: Request, res: Response) => {
@@ -36,9 +36,9 @@ export const prodcutindex = (app: Application) => {
 const showBYname = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const show = await listofproduct.getprodauctByname(
-            req.params.id as unknown as string
+            req.params.name as unknown as string
         );
-        console.log(show);
+        console.log(req.params.name);
         res.json({
             status: 'success',
             data: show,
@@ -49,7 +49,7 @@ const showBYname = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 
-// http://localhost:3000/getproductByname/name 
+// http://localhost:3000/getproductByname/:name 
 export const showproduct = (app: Application) => {
     app.get('/getproductByname/:name', showBYname);
 };
@@ -77,7 +77,7 @@ export const updatebyname = (app: Application) => {
 // delete products by name 
 const deleteproduct = async (req: Request, res: Response) => {
     const deleteproductdata = await listofproduct.deleteByname(
-        req.params.id as unknown as string
+        req.params.name as unknown as string
     );
     res.json({
         status: 'success',

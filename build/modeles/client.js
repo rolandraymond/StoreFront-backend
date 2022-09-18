@@ -61,7 +61,7 @@ class userlist {
     async update(user) {
         try {
             const connect = await DataBase_1.default.connect();
-            const sql = `UPDATE users SET email=$1 , first_name=$2 , last_name=$3, user_name=$4 password=$5 WHERE 
+            const sql = `UPDATE users SET email=$1 , first_name=$2 , last_name=$3, user_name=$4, password=$5 WHERE 
              id=$6 RETURNING email , user_name , first_name ,last_name ,id `;
             const result = await connect.query(sql, [
                 user.email,

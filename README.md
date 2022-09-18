@@ -45,3 +45,17 @@ run server
 ## delete tables
 
 `npm run db-migrate down -c3 OR npm run deleteTable`
+
+First, create a .env file with all the required environment variables:
+
+```
+ postgres_Host=localhost
+ Convert_DB=test
+ postgres_DB=users
+ postgres_DB_Ecommerce=ecommerce
+ POSTGRES_USER=postgres
+ POSTGRES_PASSWORD=code
+ BCRYPT_pass=secret_password
+ round_hash=10
+ token_secret=users_secret_token
+```
