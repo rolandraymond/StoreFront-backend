@@ -130,24 +130,22 @@ message: "its work"
 `POST` // http://localhost:3000/createproduct
 
 ```
-		Request Data:{
+Request Data:{
 
-		"name":String,
-		"price": String,
-		"seller":String
-		}
-
-	Response Body:	{
-  "status": "success",
-  "message": "create data",
-  "data": {
-    "name" : String,
-		"price": String,
-		"seller":String
-  }
+"name":String,
+"price": String,
+"seller":String
 }
 
-
+Response Body:	{
+"status": "success",
+"message": "create data",
+"data": {
+"name" : String,
+"price": String,
+"seller":String
+}
+}
 ```
 
 ### Get All products
