@@ -32,11 +32,11 @@ class listorder {
     }
     async create(order) {
         try {
-            const sql = `INSERT INTO orders (status, user_id) values($1, $2 )  RETURNING *`;
+            const sql = `INSERT INTO orders (status, users_id) values($1, $2 )  RETURNING *`;
             const conn = await DataBase_1.default.connect();
             const result = await conn.query(sql, [
                 order.status,
-                order.user_id
+                order.users_id
             ]);
             conn.release();
             return result.rows[0];
@@ -48,10 +48,10 @@ class listorder {
     async update(order) {
         try {
             const connect = await DataBase_1.default.connect();
-            const sql = `UPDATE orders SET  user_id=$1 , status=$2 WHERE 
-             user_id=$1 RETURNING *`;
+            const sql = `UPDATE orders SET  users_id=$1 , status=$2 WHERE 
+             users_id=$1 RETURNING *`;
             const result = await connect.query(sql, [
-                order.user_id,
+                order.users_id,
                 order.status
             ]);
             connect.release();
@@ -64,7 +64,7 @@ class listorder {
     async deleteByid(order_id) {
         try {
             const connect = await DataBase_1.default.connect();
-            const sql = `DELETE FROM orders WHERE order_id=$1 RETURNING product_id `;
+            const sql = `DELETE FROM orders WHERE id=$1 RETURNING users_id `;
             const result = await connect.query(sql, [order_id]);
             connect.release();
             return result.rows[0];

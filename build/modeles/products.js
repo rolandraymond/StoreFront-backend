@@ -73,7 +73,7 @@ class prodactlist {
             return result.rows[0];
         }
         catch (err) {
-            throw new Error(`unable to delete by id   : ${err}`);
+            throw new Error(`unable to delete by name  : ${err}`);
         }
     }
 }

@@ -49,7 +49,7 @@ export class listorder {
         try {
             const connect = await client.connect();
             const sql = `UPDATE orders SET  users_id=$1 , status=$2 WHERE 
-             user_id=$1 RETURNING *`;
+             users_id=$1 RETURNING *`;
             const result = await connect.query(sql, [
                 order.users_id,
                 order.status
@@ -64,7 +64,7 @@ export class listorder {
     async deleteByid(order_id: string): Promise<orders> {
         try {
             const connect = await client.connect();
-            const sql = `DELETE FROM orders WHERE order_id=$1 RETURNING product_id `;
+            const sql = `DELETE FROM orders WHERE id=$1 RETURNING users_id `;
             const result = await connect.query(sql, [order_id]);
             connect.release();
             return result.rows[0];

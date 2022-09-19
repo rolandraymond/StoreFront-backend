@@ -28,6 +28,18 @@
 - make routes file [conorders.ts , conproducts.ts , conUsers.ts]
 - connect routes file to index file
 
+## info PostgreSQL
+
+`PORT:5432` //as Default
+
+```
+# create  postgres_DB
+CREATE DATABASE ecommerce;
+
+# create postgres_DB for test
+CREATE DATABASE users;
+```
+
 ## Documentation to run project
 
 test project

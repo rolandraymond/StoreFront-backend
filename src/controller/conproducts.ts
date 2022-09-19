@@ -53,7 +53,7 @@ const showBYname = async (req: Request, res: Response, next: NextFunction) => {
 export const showproduct = (app: Application) => {
     app.get('/getproductByname/:name', showBYname);
 };
-// update product by name 
+// update product by id
 const updateproduct = async (
     req: Request,
     res: Response,
@@ -71,7 +71,7 @@ const updateproduct = async (
     }
 };
 // http://localhost:3000/updateproduct
-export const updatebyname = (app: Application) => {
+export const updatebyId = (app: Application) => {
     app.patch('/updateproduct', updateproduct);
 };
 // delete products by name 
@@ -85,7 +85,7 @@ const deleteproduct = async (req: Request, res: Response) => {
         message: 'its work ',
     });
 };
-// // http://localhost:3000/deleteproductByname/:name
+// http://localhost:3000/deleteproductByname/:name
 export const deleteProductByname = (app: Application) => {
     app.get('/deleteproductByname/:name', deleteproduct);
 };

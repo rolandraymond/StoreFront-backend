@@ -74,7 +74,7 @@ export class prodactlist {
       connect.release();
       return result.rows[0];
     } catch (err) {
-      throw new Error(`unable to delete by id   : ${err}`);
+      throw new Error(`unable to delete by name  : ${err}`);
     }
   }
 }

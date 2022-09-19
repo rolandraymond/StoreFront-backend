@@ -58,11 +58,11 @@ conUsers_1.default.sgin_user(app);
 productroutes.createproduct(app);
 // get all products  http://localhost:3000/allproducts
 productroutes.prodcutindex(app);
-// get specifically by name  http://localhost:3000/getproductByname/name 
+// get specifically by name  http://localhost:3000/getproductByname/:name 
 productroutes.showproduct(app);
 // update  data of product by name http://localhost:3000/updateproduct
-productroutes.updatebyname(app);
-// delete product by name http://localhost:3000/deleteproductByid/:name
+productroutes.updatebyId(app);
+// delete product by name http://localhost:3000/deleteproductByname/:name
 productroutes.deleteProductByname(app);
 app.listen(port, () => {
     console.log(`listen port ${port}`);

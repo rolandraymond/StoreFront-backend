@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProductByname = exports.updatebyname = exports.showproduct = exports.prodcutindex = exports.createproduct = exports.create = void 0;
+exports.deleteProductByname = exports.updatebyId = exports.showproduct = exports.prodcutindex = exports.createproduct = exports.create = void 0;
 const products_1 = require("../modeles/products");
 const listofproduct = new products_1.prodactlist();
 const create = async (req, res, next) => {
@@ -52,7 +52,7 @@ const showproduct = (app) => {
     app.get('/getproductByname/:name', showBYname);
 };
 exports.showproduct = showproduct;
-// update product by name 
+// update product by id
 const updateproduct = async (req, res, next) => {
     try {
         const updatethisproduct = await listofproduct.update(req.body);
@@ -67,10 +67,10 @@ const updateproduct = async (req, res, next) => {
     }
 };
 // http://localhost:3000/updateproduct
-const updatebyname = (app) => {
+const updatebyId = (app) => {
     app.patch('/updateproduct', updateproduct);
 };
-exports.updatebyname = updatebyname;
+exports.updatebyId = updatebyId;
 // delete products by name 
 const deleteproduct = async (req, res) => {
     const deleteproductdata = await listofproduct.deleteByname(req.params.name);
@@ -80,7 +80,7 @@ const deleteproduct = async (req, res) => {
         message: 'its work ',
     });
 };
-// // http://localhost:3000/deleteproductByname/:name
+// http://localhost:3000/deleteproductByname/:name
 const deleteProductByname = (app) => {
     app.get('/deleteproductByname/:name', deleteproduct);
 };

@@ -43,13 +43,13 @@ productroutes.createproduct(app);
 // get all products  http://localhost:3000/allproducts
 productroutes.prodcutindex(app)
 
-// get specifically by name  http://localhost:3000/getproductByname/name 
+// get specifically by name  http://localhost:3000/getproductByname/:name 
 productroutes.showproduct(app)
 
 // update  data of product by name http://localhost:3000/updateproduct
-productroutes.updatebyname(app)
+productroutes.updatebyId(app)
 
-// delete product by name http://localhost:3000/deleteproductByid/:name
+// delete product by name http://localhost:3000/deleteproductByname/:name
 productroutes.deleteProductByname(app)
 
 app.listen(port, () => {

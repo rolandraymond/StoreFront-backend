@@ -257,6 +257,8 @@ Response Body: {
 `GET` // http://localhost:3000/getorderByid/:id
 
 ```
+Request : (Required Authorization Header)
+
 Response Body: {
 "status": "success",
 "message": "create data",
@@ -390,4 +392,74 @@ quantity: 	Number,
 product_id:Number
 }
 }
+```
+
+# Database Schema
+
+## users
+
+```
+                                      Table "public.users"
+   Column   |          Type          | Collation | Nullable |              Default
+------------+------------------------+-----------+----------+-----------------------------------
+ id         | integer                |           | not null | nextval('users_id_seq'::regclass)
+ user_name  | character varying(50)  |           | not null |
+ first_name | character varying(50)  |           | not null |
+ last_name  | character varying(50)  |           | not null |
+ password   | character varying(255) |           | not null |
+ email      | character varying(255) |           |          |
+Indexes:
+    "users_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "orders" CONSTRAINT "orders_users_id_fkey" FOREIGN KEY (users_id) REFERENCES users(id)
+```
+
+## products
+
+```
+                                     Table "public.products"
+  Column   |         Type          | Collation | Nullable |                   Default
+------------+-----------------------+-----------+----------+----------------------------------------------
+ product_id | integer               |           | not null | nextval('products_product_id_seq'::regclass)
+ name       | character varying(50) |           | not null |
+ price      | integer               |           | not null |
+ seller     | character varying(50) |           | not null |
+Indexes:
+    "products_pkey" PRIMARY KEY, btree (product_id)
+Referenced by:
+    TABLE "orders_products" CONSTRAINT "orders_products_product_id_fkey" FOREIGN KEY (product_id) REFERENCES products(product_id)
+```
+
+## orders
+
+```
+                                    Table "public.orders"
+  Column  |          Type          | Collation | Nullable |              Default
+----------+------------------------+-----------+----------+------------------------------------
+ id       | integer                |           | not null | nextval('orders_id_seq'::regclass)
+ status   | character varying(100) |           | not null |
+ users_id | integer                |           | not null |
+Indexes:
+    "orders_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "orders_users_id_fkey" FOREIGN KEY (users_id) REFERENCES users(id)
+Referenced by:
+    TABLE "orders_products" CONSTRAINT "orders_products_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(id)
+```
+
+## orders_products
+
+```
+                              Table "public.orders_products"
+   Column   |  Type   | Collation | Nullable |                   Default
+------------+---------+-----------+----------+---------------------------------------------
+ id         | integer |           | not null | nextval('orders_products_id_seq'::regclass)
+ quantity   | integer |           |          |
+ product_id | integer |           |          |
+ order_id   | integer |           |          |
+Indexes:
+    "orders_products_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "orders_products_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(id)
+    "orders_products_product_id_fkey" FOREIGN KEY (product_id) REFERENCES products(product_id)
 ```

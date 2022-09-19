@@ -22,7 +22,7 @@ describe("product  list function", () => {
 
     it('create product  by create modle', async () => {
         const productdata = {
-            product_id: 1,
+
             name: 'tool',
             seller: 'jack',
             price: 200
@@ -32,7 +32,7 @@ describe("product  list function", () => {
         const result = await dataofproduct.create(productdata);
 
         expect(result).toEqual({
-            product_id: 1,
+            product_id: 2,
             name: 'tool',
             seller: 'jack',
             price: 200
@@ -43,7 +43,7 @@ describe("product  list function", () => {
         const result = await dataofproduct.getall();
 
         expect(result).toEqual([{
-            product_id: 1,
+            product_id: 2,
             name: 'tool',
             seller: 'jack',
             price: 200
@@ -55,7 +55,7 @@ describe("product  list function", () => {
 
 
         expect(result).toEqual({
-            product_id: 1,
+            product_id: 2,
             name: 'tool',
             seller: 'jack',
             price: 200
