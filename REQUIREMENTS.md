@@ -50,7 +50,7 @@ Response Body:{
 
 ### Users_list
 
-`GET` // http://localhost:3000/allusers
+`GET` // http://localhost:3000/allusers [token required]
 
 ```
  Response Body:[{
@@ -66,7 +66,7 @@ Response Body:{
 
 ### Get user User By ID
 
-`GET` // http://localhost:3000/getuserByid/:id
+`GET` // http://localhost:3000/getuserByid/:id [token required]
 
 ```
 	Response Body:{
