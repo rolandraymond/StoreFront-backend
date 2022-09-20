@@ -11,9 +11,14 @@ const client_1 = require("../modeles/client");
 const authenticate_1 = __importDefault(require("../middlewere/authenticate"));
 // get all users 
 const userList = new client_1.userlist();
-const index = async (_req, res) => {
-    const getallusers = await userList.index();
-    res.json(getallusers);
+const index = async (_req, res, next) => {
+    try {
+        const getallusers = await userList.index();
+        res.json(getallusers);
+    }
+    catch (error) {
+        next(error);
+    }
 };
 // http://localhost:3000/allusers
 const userindex = (app) => {
@@ -75,13 +80,18 @@ const updatebyId = (app) => {
     app.patch('/updateuser', updateuser);
 };
 // delete user by deleteUser
-const deleteUSER = async (req, res) => {
-    const deleteUser = await userList.deleteByid(req.params.id);
-    res.json({
-        status: 'success',
-        data: deleteUser,
-        message: 'its work ',
-    });
+const deleteUSER = async (req, res, next) => {
+    try {
+        const deleteUser = await userList.deleteByid(req.params.id);
+        res.json({
+            status: 'success',
+            data: deleteUser,
+            message: 'its work ',
+        });
+    }
+    catch (error) {
+        next(error);
+    }
 };
 // http://localhost:3000/deleteUserByid/:id
 const deleteByid = (app) => {

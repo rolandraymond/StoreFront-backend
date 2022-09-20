@@ -7,9 +7,14 @@ import checktoken from '../middlewere/authenticate';
 
 // get all users 
 const userList = new userlist();
-const index = async (_req: Request, res: Response) => {
-    const getallusers = await userList.index();
-    res.json(getallusers);
+const index = async (_req: Request, res: Response, next: NextFunction) => {
+    try {
+        const getallusers = await userList.index();
+        res.json(getallusers);
+    } catch (error) {
+        next(error)
+    }
+
 };
 
 // http://localhost:3000/allusers
@@ -81,15 +86,20 @@ const updatebyId = (app: Application) => {
 };
 
 // delete user by deleteUser
-const deleteUSER = async (req: Request, res: Response) => {
-    const deleteUser = await userList.deleteByid(
-        req.params.id as unknown as string
-    );
-    res.json({
-        status: 'success',
-        data: deleteUser,
-        message: 'its work ',
-    });
+const deleteUSER = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const deleteUser = await userList.deleteByid(
+            req.params.id as unknown as string
+        );
+        res.json({
+            status: 'success',
+            data: deleteUser,
+            message: 'its work ',
+        });
+    } catch (error) {
+        next(error)
+    }
+
 };
 // http://localhost:3000/deleteUserByid/:id
 const deleteByid = (app: express.Application) => {

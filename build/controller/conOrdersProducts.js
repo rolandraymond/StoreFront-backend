@@ -23,9 +23,14 @@ const createproduct = (app) => {
 };
 exports.createproduct = createproduct;
 // get all prouducts by index routes
-const index = async (_req, res) => {
-    const getall = await listofOrdersProducts.index();
-    res.json(getall);
+const index = async (_req, res, next) => {
+    try {
+        const getall = await listofOrdersProducts.index();
+        res.json(getall);
+    }
+    catch (error) {
+        next(error);
+    }
 };
 // http://localhost:3000/allproducts
 const prodcutindex = (app) => {
@@ -72,13 +77,18 @@ const updatebyId = (app) => {
 };
 exports.updatebyId = updatebyId;
 // delete products by id
-const deleteOrdersProducts = async (req, res) => {
-    const deleteproductdata = await listofOrdersProducts.deleteByid(req.params.name);
-    res.json({
-        status: 'success',
-        data: deleteproductdata,
-        message: 'its work ',
-    });
+const deleteOrdersProducts = async (req, res, next) => {
+    try {
+        const deleteproductdata = await listofOrdersProducts.deleteByid(req.params.name);
+        res.json({
+            status: 'success',
+            data: deleteproductdata,
+            message: 'its work ',
+        });
+    }
+    catch (error) {
+        next(error);
+    }
 };
 // http://localhost:3000/deleteOrdersProductsByid/:id
 const deleteProductByid = (app) => {

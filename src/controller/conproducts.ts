@@ -24,9 +24,13 @@ export const createproduct = (app: Application) => {
     app.post('/createproduct', create);
 };
 // get all prouducts by index routes
-const index = async (_req: Request, res: Response) => {
-    const getallproduct = await listofproduct.getall();
-    res.json(getallproduct);
+const index = async (_req: Request, res: Response, next: NextFunction) => {
+    try {
+        const getallproduct = await listofproduct.getall();
+        res.json(getallproduct);
+    } catch (err) {
+        next(err)
+    }
 };
 // http://localhost:3000/allproducts
 export const prodcutindex = (app: Application) => {
@@ -75,15 +79,19 @@ export const updatebyId = (app: Application) => {
     app.patch('/updateproduct', updateproduct);
 };
 // delete products by name 
-const deleteproduct = async (req: Request, res: Response) => {
-    const deleteproductdata = await listofproduct.deleteByname(
-        req.params.name as unknown as string
-    );
-    res.json({
-        status: 'success',
-        data: deleteproductdata,
-        message: 'its work ',
-    });
+const deleteproduct = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const deleteproductdata = await listofproduct.deleteByname(
+            req.params.name as unknown as string
+        );
+        res.json({
+            status: 'success',
+            data: deleteproductdata,
+            message: 'its work ',
+        });
+    } catch (error) {
+        next(error)
+    }
 };
 // http://localhost:3000/deleteproductByname/:name
 export const deleteProductByname = (app: Application) => {

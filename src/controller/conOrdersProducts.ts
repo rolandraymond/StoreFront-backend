@@ -24,9 +24,14 @@ export const createproduct = (app: Application) => {
     app.post('/createOrdersProducts', create);
 };
 // get all prouducts by index routes
-const index = async (_req: Request, res: Response) => {
-    const getall = await listofOrdersProducts.index();
-    res.json(getall);
+const index = async (_req: Request, res: Response, next: NextFunction) => {
+    try {
+        const getall = await listofOrdersProducts.index();
+        res.json(getall);
+    } catch (error) {
+        next(error)
+    }
+
 };
 // http://localhost:3000/allproducts
 export const prodcutindex = (app: Application) => {
@@ -75,16 +80,22 @@ export const updatebyId = (app: Application) => {
     app.patch('/updateOrdersProducts', updateOrdersProducts);
 };
 // delete products by id
-const deleteOrdersProducts = async (req: Request, res: Response) => {
-    const deleteproductdata = await listofOrdersProducts.deleteByid(
-        req.params.name as unknown as string
-    );
-    res.json({
-        status: 'success',
-        data: deleteproductdata,
-        message: 'its work ',
-    });
-};
+const deleteOrdersProducts = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const deleteproductdata = await listofOrdersProducts.deleteByid(
+            req.params.name as unknown as string
+        );
+        res.json({
+            status: 'success',
+            data: deleteproductdata,
+            message: 'its work ',
+        });
+
+    } catch (error) {
+        next(error)
+    }
+}
+
 // http://localhost:3000/deleteOrdersProductsByid/:id
 export const deleteProductByid = (app: Application) => {
     app.get('/deleteOrdersProductsByid/:id', deleteOrdersProducts);

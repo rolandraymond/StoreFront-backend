@@ -73,15 +73,19 @@ export const updatebyId = (app: Application) => {
 
 
 // delete order by id 
-const deleteorder = async (req: Request, res: Response) => {
-    const orderdelete = await orderlist.deleteByid(
-        req.params.id as unknown as string
-    );
-    res.json({
-        status: 'success',
-        data: orderdelete,
-        message: 'its work ',
-    });
+const deleteorder = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const orderdelete = await orderlist.deleteByid(
+            req.params.id as unknown as string
+        );
+        res.json({
+            status: 'success',
+            data: orderdelete,
+            message: 'its work ',
+        });
+    } catch (error) {
+        next(error);
+    }
 };
 //  http://localhost:3000/deleteorderByid/:id
 export const deleteByid = (app: Application) => {
