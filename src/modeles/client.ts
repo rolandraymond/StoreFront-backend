@@ -1,4 +1,4 @@
-import client from '../database';
+import client from '../databas';
 import bcrypt from 'bcrypt';
 import config from '../config';
 
