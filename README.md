@@ -65,7 +65,7 @@ First, create a `.env` file with all the required environment variables:
  Convert_DB=test
  Postgres_DB_test=test  // test Database
  Postgres_DB=ecommerce   // dev Database
- POSTGRES_USER=postgres
+ POSTGRES_user=postgres
  POSTGRES_PASSWORD=code
 BCRYPT_pass=secret_password
 round_hash=10
