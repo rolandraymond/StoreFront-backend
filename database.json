@@ -8,10 +8,10 @@
             "ENV": "postgres_Host"
         },
         "database": {
-            "ENV": "POSTGRES_DB"
+            "ENV": "POSTGRES_DB_test"
         },
         "user": {
-            "ENV": "POSTGRES_USER"
+            "ENV": "POSTGRES_user"
         },
         "password": {
             "ENV": "POSTGRES_PASSWORD"
@@ -23,10 +23,10 @@
             "ENV": "postgres_Host"
         },
         "database": {
-            "ENV": "postgres_DB_Ecommerce"
+            "ENV": "Postgres_DB"
         },
         "user": {
-            "ENV": "POSTGRES_USER"
+            "ENV": "POSTGRES_user"
         },
         "password": {
             "ENV": "POSTGRES_PASSWORD"

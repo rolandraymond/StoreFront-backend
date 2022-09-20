@@ -37,7 +37,7 @@
 CREATE DATABASE ecommerce;
 
 # create postgres_DB for test
-CREATE DATABASE users;
+CREATE DATABASE test;
 ```
 
 ## Documentation to run project
@@ -63,11 +63,11 @@ First, create a `.env` file with all the required environment variables:
 ```
  postgres_Host=localhost
  Convert_DB=test
- postgres_DB=users
- postgres_DB_Ecommerce=ecommerce
+ Postgres_DB_test=test  // test Database
+ Postgres_DB=ecommerce   // dev Database
  POSTGRES_USER=postgres
  POSTGRES_PASSWORD=code
- BCRYPT_pass=secret_password
- round_hash=10
- token_secret=users_secret_token
+BCRYPT_pass=secret_password
+round_hash=10
+token_secret=users_secret_token
 ```

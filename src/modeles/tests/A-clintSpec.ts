@@ -62,7 +62,7 @@ describe("Userlist function", () => {
     });
 
     it('Get user By useing id by show method', async () => {
-        const result = await Userlist.show("2");
+        const result = await Userlist.show("1");
         const { first_name, last_name, user_name, email } = result
 
         expect({ first_name, last_name, user_name, email }).toEqual({
@@ -76,7 +76,7 @@ describe("Userlist function", () => {
     });
 
     it('delete user by user id using id method', async () => {
-        await Userlist.deleteByid('2');
+        await Userlist.deleteByid('1');
         const result = await Userlist.index()
 
         expect(result).toEqual([]);

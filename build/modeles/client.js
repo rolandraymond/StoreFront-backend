@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userlist = exports.hashPassword = void 0;
-const DataBase_1 = __importDefault(require("../DataBase"));
+const database_1 = __importDefault(require("../database"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const config_1 = __importDefault(require("../config"));
 const hashPassword = (password) => {
@@ -16,7 +16,7 @@ exports.hashPassword = hashPassword;
 class userlist {
     async index() {
         try {
-            const connect = await DataBase_1.default.connect();
+            const connect = await database_1.default.connect();
             const sql = 'SELECT * FROM users ';
             const result = await connect.query(sql);
             connect.release();
@@ -30,7 +30,7 @@ class userlist {
     async show(id) {
         try {
             const sql = 'SELECT * from users where id=$1';
-            const connect = await DataBase_1.default.connect();
+            const connect = await database_1.default.connect();
             const result = await connect.query(sql, [id]);
             connect.release();
             return result.rows[0];
@@ -43,7 +43,7 @@ class userlist {
     async create(users) {
         try {
             const sql = `INSERT INTO users (email, user_name, last_name, first_name, password) values($1, $2 ,$3 , $4, $5)  RETURNING *`;
-            const conn = await DataBase_1.default.connect();
+            const conn = await database_1.default.connect();
             const result = await conn.query(sql, [
                 users.email,
                 users.user_name,
@@ -60,7 +60,7 @@ class userlist {
     }
     async update(user) {
         try {
-            const connect = await DataBase_1.default.connect();
+            const connect = await database_1.default.connect();
             const sql = `UPDATE users SET email=$1 , first_name=$2 , last_name=$3, user_name=$4, password=$5 WHERE 
              id=$6 RETURNING email , user_name , first_name ,last_name ,id `;
             const result = await connect.query(sql, [
@@ -80,7 +80,7 @@ class userlist {
     }
     async sign_in(user_name, password) {
         try {
-            const conn = await DataBase_1.default.connect();
+            const conn = await database_1.default.connect();
             const sql = `SELECT password FROM users WHERE user_name=$1`;
             const result = await conn.query(sql, [user_name]);
             if (result.rows.length) {
@@ -104,7 +104,7 @@ class userlist {
     }
     async deleteByid(id) {
         try {
-            const connect = await DataBase_1.default.connect();
+            const connect = await database_1.default.connect();
             const sql = `DELETE FROM users WHERE id=$1 RETURNING user_name `;
             const result = await connect.query(sql, [id]);
             connect.release();

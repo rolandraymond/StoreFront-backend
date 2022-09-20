@@ -23,7 +23,7 @@ describe("product  list function", () => {
         };
         const result = await dataofproduct.create(productdata);
         expect(result).toEqual({
-            product_id: 2,
+            product_id: 1,
             name: 'tool',
             seller: 'jack',
             price: 200
@@ -32,7 +32,7 @@ describe("product  list function", () => {
     it('get all products by getall method', async () => {
         const result = await dataofproduct.getall();
         expect(result).toEqual([{
-                product_id: 2,
+                product_id: 1,
                 name: 'tool',
                 seller: 'jack',
                 price: 200
@@ -41,7 +41,7 @@ describe("product  list function", () => {
     it('Get product By useing id by show method', async () => {
         const result = await dataofproduct.getprodauctByname("tool");
         expect(result).toEqual({
-            product_id: 2,
+            product_id: 1,
             name: 'tool',
             seller: 'jack',
             price: 200

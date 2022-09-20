@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.listorder = void 0;
-const DataBase_1 = __importDefault(require("../DataBase"));
+const database_1 = __importDefault(require("../database"));
 class listorder {
     async index() {
         try {
-            const connect = await DataBase_1.default.connect();
+            const connect = await database_1.default.connect();
             const sql = 'SELECT * FROM orders ';
             const result = await connect.query(sql);
             connect.release();
@@ -21,7 +21,7 @@ class listorder {
     async show(order_id) {
         try {
             const sql = 'SELECT * from orders where id=($1)';
-            const connect = await DataBase_1.default.connect();
+            const connect = await database_1.default.connect();
             const result = await connect.query(sql, [order_id]);
             connect.release();
             return result.rows[0];
@@ -33,7 +33,7 @@ class listorder {
     async create(order) {
         try {
             const sql = `INSERT INTO orders (status, users_id) values($1, $2 )  RETURNING *`;
-            const conn = await DataBase_1.default.connect();
+            const conn = await database_1.default.connect();
             const result = await conn.query(sql, [
                 order.status,
                 order.users_id
@@ -47,7 +47,7 @@ class listorder {
     }
     async update(order) {
         try {
-            const connect = await DataBase_1.default.connect();
+            const connect = await database_1.default.connect();
             const sql = `UPDATE orders SET  users_id=$1 , status=$2 WHERE 
              users_id=$1 RETURNING *`;
             const result = await connect.query(sql, [
@@ -63,7 +63,7 @@ class listorder {
     }
     async deleteByid(order_id) {
         try {
-            const connect = await DataBase_1.default.connect();
+            const connect = await database_1.default.connect();
             const sql = `DELETE FROM orders WHERE id=$1 RETURNING users_id `;
             const result = await connect.query(sql, [order_id]);
             connect.release();

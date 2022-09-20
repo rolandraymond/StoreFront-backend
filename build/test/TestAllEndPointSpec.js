@@ -24,7 +24,7 @@ const userdata = {
     id: 2
 };
 const orderdata = {
-    users_id: 3,
+    users_id: 2,
     status: "open"
 };
 const orderId = { id: 1 };
