@@ -14,7 +14,7 @@ const index = async (_req: Request, res: Response) => {
 
 // http://localhost:3000/allusers
 const userindex = (app: express.Application) => {
-    app.get('/allusers', index);
+    app.get('/allusers', checktoken, index);
 };
 
 // create user by create modules 
@@ -46,7 +46,7 @@ routes.post('/createUsers', create);
 const showBYid = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const show = await userList.show(req.params.id as unknown as string);
-        console.log(show);
+        // console.log(show);
         res.json({
             status: 'success',
             data: show,
@@ -97,7 +97,7 @@ const deleteByid = (app: express.Application) => {
 };
 
 // sign in by username and password  to get token 
-const sign_in = async (req: Request, res: Response, next: NextFunction) => {
+export const sign_in = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { user_name, password } = req.body;
         const user = await userList.sign_in(user_name, password);

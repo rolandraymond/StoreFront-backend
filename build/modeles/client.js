@@ -87,14 +87,14 @@ class userlist {
                 const { password: hashPassword } = result.rows[0];
                 console.log(`${password}${config_1.default.crypt_pass}`);
                 const checkpassword = bcrypt_1.default.compareSync(`${password}${config_1.default.crypt_pass}`, hashPassword);
-                console.log(checkpassword);
+                // console.log(checkpassword);
                 if (checkpassword) {
                     const sqluserdata = 'SELECT id , user_name ,email , password , first_name , last_name FROM users WHERE user_name=$1';
                     const userdata = await conn.query(sqluserdata, [user_name]);
                     return userdata.rows[0];
                 }
             }
-            // console.log(result)
+            console.log(result);
             conn.release();
             return null;
         }

@@ -93,7 +93,7 @@ export class userlist {
           `${password}${config.crypt_pass}`,
           hashPassword
         );
-        console.log(checkpassword);
+        // console.log(checkpassword);
         if (checkpassword) {
           const sqluserdata =
             'SELECT id , user_name ,email , password , first_name , last_name FROM users WHERE user_name=$1';
@@ -102,7 +102,7 @@ export class userlist {
           return userdata.rows[0];
         }
       }
-      // console.log(result)
+      console.log(result)
 
       conn.release();
       return null;

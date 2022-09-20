@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.create = void 0;
+exports.sign_in = exports.create = void 0;
 const config_1 = __importDefault(require("../config"));
 const express_1 = __importDefault(require("express"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
@@ -17,7 +17,7 @@ const index = async (_req, res) => {
 };
 // http://localhost:3000/allusers
 const userindex = (app) => {
-    app.get('/allusers', index);
+    app.get('/allusers', authenticate_1.default, index);
 };
 // create user by create modules 
 const create = async (req, res, next) => {
@@ -41,7 +41,7 @@ routes.post('/createUsers', exports.create);
 const showBYid = async (req, res, next) => {
     try {
         const show = await userList.show(req.params.id);
-        console.log(show);
+        // console.log(show);
         res.json({
             status: 'success',
             data: show,
@@ -110,9 +110,10 @@ const sign_in = async (req, res, next) => {
         return next(error);
     }
 };
+exports.sign_in = sign_in;
 //  http://localhost:3000/signin
 const sgin_user = (app) => {
-    app.post('/signin', sign_in, authenticate_1.default);
+    app.post('/signin', exports.sign_in, authenticate_1.default);
 };
 exports.default = {
     userindex,
