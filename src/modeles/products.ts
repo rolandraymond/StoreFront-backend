@@ -1,4 +1,4 @@
-import client from '../databas';
+import client from '../database';
 
 export type prodact = {
   product_id?: number;
