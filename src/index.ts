@@ -2,7 +2,7 @@ import express from 'express';
 import conUsers from './controller/conUsers';
 import * as orderroutes from './controller/conorders';
 import * as productroutes from './controller/conproducts';
-import * as OrdersProductsroutes from './controller/conOrdersProducts'
+import * as OrdersProductsroutes from './controller/conOrdersProducts';
 // config server
 
 const port = 3000;
@@ -33,24 +33,22 @@ conUsers.updatebyId(app);
 //  http://localhost:3000/signin
 conUsers.sgin_user(app);
 
-
 /*     ------------------------------------   products routes ----------------------------------  */
-
 
 // create product http://localhost:3000/createproduct
 productroutes.createproduct(app);
 
 // get all products  http://localhost:3000/allproducts
-productroutes.prodcutindex(app)
+productroutes.prodcutindex(app);
 
-// get specifically by name  http://localhost:3000/getproductByname/:name 
-productroutes.showproduct(app)
+// get specifically by name  http://localhost:3000/getproductByname/:name
+productroutes.showproduct(app);
 
 // update  data of product by name http://localhost:3000/updateproduct
-productroutes.updatebyId(app)
+productroutes.updatebyId(app);
 
 // delete product by name http://localhost:3000/deleteproductByname/:name
-productroutes.deleteProductByname(app)
+productroutes.deleteProductByname(app);
 
 app.listen(port, () => {
   console.log(`listen port ${port}`);
@@ -76,19 +74,18 @@ orderroutes.deleteByid(app);
 /*     ------------------------------------   OrdersProducts routes ----------------------------------  */
 
 // create product http://localhost:3000/createOrdersProducts
-OrdersProductsroutes.createproduct(app)
+OrdersProductsroutes.createproduct(app);
 
 // http://localhost:3000/allproducts
-OrdersProductsroutes.prodcutindex(app)
+OrdersProductsroutes.prodcutindex(app);
 
-// http://localhost:3000/getOrdersProducts/:id 
-OrdersProductsroutes.showproduct(app)
+// http://localhost:3000/getOrdersProducts/:id
+OrdersProductsroutes.showproduct(app);
 
 // http://localhost:3000/updateOrdersProducts
-OrdersProductsroutes.updatebyId(app)
+OrdersProductsroutes.updatebyId(app);
 
 // http://localhost:3000/deleteOrdersProductsByid/:id
-OrdersProductsroutes.deleteProductByid(app)
-
+OrdersProductsroutes.deleteProductByid(app);
 
 export default app;

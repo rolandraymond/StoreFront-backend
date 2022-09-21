@@ -58,7 +58,7 @@ conUsers_1.default.sgin_user(app);
 productroutes.createproduct(app);
 // get all products  http://localhost:3000/allproducts
 productroutes.prodcutindex(app);
-// get specifically by name  http://localhost:3000/getproductByname/:name 
+// get specifically by name  http://localhost:3000/getproductByname/:name
 productroutes.showproduct(app);
 // update  data of product by name http://localhost:3000/updateproduct
 productroutes.updatebyId(app);
@@ -83,7 +83,7 @@ orderroutes.deleteByid(app);
 OrdersProductsroutes.createproduct(app);
 // http://localhost:3000/allproducts
 OrdersProductsroutes.prodcutindex(app);
-// http://localhost:3000/getOrdersProducts/:id 
+// http://localhost:3000/getOrdersProducts/:id
 OrdersProductsroutes.showproduct(app);
 // http://localhost:3000/updateOrdersProducts
 OrdersProductsroutes.updatebyId(app);

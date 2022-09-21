@@ -9,7 +9,7 @@ const express_1 = __importDefault(require("express"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const client_1 = require("../modeles/client");
 const authenticate_1 = __importDefault(require("../middlewere/authenticate"));
-// get all users 
+// get all users
 const userList = new client_1.userlist();
 const index = async (_req, res, next) => {
     try {
@@ -24,7 +24,7 @@ const index = async (_req, res, next) => {
 const userindex = (app) => {
     app.get('/allusers', authenticate_1.default, index);
 };
-// create user by create modules 
+// create user by create modules
 const create = async (req, res, next) => {
     try {
         const user = await userList.create(req.body);
@@ -42,7 +42,7 @@ exports.create = create;
 // use Routers express http://localhost:3000/createUsers
 const routes = express_1.default.Router();
 routes.post('/createUsers', exports.create);
-// get user by id useing  showByid modules  
+// get user by id useing  showByid modules
 const showBYid = async (req, res, next) => {
     try {
         const show = await userList.show(req.params.id);
@@ -97,7 +97,7 @@ const deleteUSER = async (req, res, next) => {
 const deleteByid = (app) => {
     app.get('/deleteUserByid/:id', deleteUSER);
 };
-// sign in by username and password  to get token 
+// sign in by username and password  to get token
 const sign_in = async (req, res, next) => {
     try {
         const { user_name, password } = req.body;

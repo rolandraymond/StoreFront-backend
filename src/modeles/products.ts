@@ -8,8 +8,7 @@ export type prodact = {
 };
 
 export class prodactlist {
-
-  // get all product 
+  // get all product
   async getall(): Promise<prodact[]> {
     try {
       const connect = await client.connect();
@@ -22,12 +21,12 @@ export class prodactlist {
     }
   }
 
-  // get prorduct by name 
+  // get prorduct by name
   async getprodauctByname(name: string): Promise<prodact> {
     try {
       const connect = await client.connect();
       const sql = `SELECT * FROM products WHERE name= $1 `;
-      const result = await connect.query(sql, [name])
+      const result = await connect.query(sql, [name]);
       connect.release();
       return result.rows[0];
     } catch (error) {
@@ -65,7 +64,7 @@ export class prodactlist {
       throw new Error(`unable to update : ${err}`);
     }
   }
-  // delete products by name 
+  // delete products by name
   async deleteByname(name: string): Promise<prodact> {
     try {
       const connect = await client.connect();

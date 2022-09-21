@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.prodactlist = void 0;
 const database_1 = __importDefault(require("../database"));
 class prodactlist {
-    // get all product 
+    // get all product
     async getall() {
         try {
             const connect = await database_1.default.connect();
@@ -19,7 +19,7 @@ class prodactlist {
             throw new Error(`something wrong ${err}`);
         }
     }
-    // get prorduct by name 
+    // get prorduct by name
     async getprodauctByname(name) {
         try {
             const connect = await database_1.default.connect();
@@ -63,7 +63,7 @@ class prodactlist {
             throw new Error(`unable to update : ${err}`);
         }
     }
-    // delete products by name 
+    // delete products by name
     async deleteByname(name) {
         try {
             const connect = await database_1.default.connect();

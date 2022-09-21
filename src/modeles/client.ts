@@ -16,7 +16,6 @@ export type clients = {
 };
 // select users
 export class userlist {
-
   async index(): Promise<clients[]> {
     try {
       const connect = await client.connect();
@@ -102,7 +101,7 @@ export class userlist {
           return userdata.rows[0];
         }
       }
-      console.log(result)
+      console.log(result);
 
       conn.release();
       return null;

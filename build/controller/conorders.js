@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteByid = exports.updatebyId = exports.showorder = exports.orderindex = exports.routes = exports.create = void 0;
 const express_1 = __importDefault(require("express"));
 const orders_1 = require("../modeles/orders");
-//create orders by router express 
+const authenticate_1 = __importDefault(require("../middlewere/authenticate"));
+//create orders by router express
 const orderlist = new orders_1.listorder();
 const create = async (req, res, next) => {
     try {
@@ -24,8 +25,8 @@ const create = async (req, res, next) => {
 exports.create = create;
 //  http://localhost:3000/createOrders
 exports.routes = express_1.default.Router();
-exports.routes.post('/createOrder', exports.create);
-// get all  orders by index modles 
+exports.routes.post('/createOrder', authenticate_1.default, exports.create);
+// get all  orders by index modles
 const index = async (_req, res) => {
     const getallorders = await orderlist.index();
     res.json(getallorders);
@@ -52,7 +53,7 @@ const showBYid = async (req, res, next) => {
 };
 //  http://localhost:3000/getorderByid/:id
 const showorder = (app) => {
-    app.get('/getorderByid/:id', showBYid);
+    app.get('/getorderByid/:id', authenticate_1.default, showBYid);
 };
 exports.showorder = showorder;
 // update order by useing updateorder
@@ -71,10 +72,10 @@ const updateorder = async (req, res, next) => {
 };
 //  http://localhost:3000/updateorder
 const updatebyId = (app) => {
-    app.patch('/updateorder', updateorder);
+    app.patch('/updateorder', authenticate_1.default, updateorder);
 };
 exports.updatebyId = updatebyId;
-// delete order by id 
+// delete order by id
 const deleteorder = async (req, res, next) => {
     try {
         const orderdelete = await orderlist.deleteByid(req.params.id);

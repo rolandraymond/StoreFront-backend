@@ -34,10 +34,7 @@ class listorder {
         try {
             const sql = `INSERT INTO orders (status, users_id) values($1, $2 )  RETURNING *`;
             const conn = await database_1.default.connect();
-            const result = await conn.query(sql, [
-                order.status,
-                order.users_id
-            ]);
+            const result = await conn.query(sql, [order.status, order.users_id]);
             conn.release();
             return result.rows[0];
         }
@@ -50,10 +47,7 @@ class listorder {
             const connect = await database_1.default.connect();
             const sql = `UPDATE orders SET  users_id=$1 , status=$2 WHERE 
              users_id=$1 RETURNING *`;
-            const result = await connect.query(sql, [
-                order.users_id,
-                order.status
-            ]);
+            const result = await connect.query(sql, [order.users_id, order.status]);
             connect.release();
             return result.rows[0];
         }

@@ -37,7 +37,7 @@ class OrdersProductsList {
             const result = await conn.query(sql, [
                 OP.order_id,
                 OP.product_id,
-                OP.quantity
+                OP.quantity,
             ]);
             conn.release();
             return result.rows[0];
@@ -54,7 +54,7 @@ class OrdersProductsList {
             const result = await connect.query(sql, [
                 OP.order_id,
                 OP.product_id,
-                OP.quantity
+                OP.quantity,
             ]);
             connect.release();
             return result.rows[0];

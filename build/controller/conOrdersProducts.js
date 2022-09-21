@@ -1,7 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProductByid = exports.updatebyId = exports.showproduct = exports.prodcutindex = exports.createproduct = exports.create = void 0;
 const orders_products_1 = require("../modeles/orders-products");
+const authenticate_1 = __importDefault(require("../middlewere/authenticate"));
 const listofOrdersProducts = new orders_products_1.OrdersProductsList();
 const create = async (req, res, next) => {
     try {
@@ -19,7 +23,7 @@ const create = async (req, res, next) => {
 exports.create = create;
 // create product http://localhost:3000/createOrdersProducts
 const createproduct = (app) => {
-    app.post('/createOrdersProducts', exports.create);
+    app.post('/createOrdersProducts', authenticate_1.default, exports.create);
 };
 exports.createproduct = createproduct;
 // get all prouducts by index routes
@@ -34,10 +38,10 @@ const index = async (_req, res, next) => {
 };
 // http://localhost:3000/allproducts
 const prodcutindex = (app) => {
-    app.get('/allOrdersProducts', index);
+    app.get('/allOrdersProducts', authenticate_1.default, index);
 };
 exports.prodcutindex = prodcutindex;
-//  get products by name 
+//  get products by name
 const showBYID = async (req, res, next) => {
     try {
         const show = await listofOrdersProducts.show(req.params.name);
@@ -52,12 +56,12 @@ const showBYID = async (req, res, next) => {
         next(error);
     }
 };
-// http://localhost:3000/getOrdersProducts/:id 
+// http://localhost:3000/getOrdersProducts/:id
 const showproduct = (app) => {
-    app.get('/getOrdersProducts/:id', showBYID);
+    app.get('/getOrdersProducts/:id', authenticate_1.default, showBYID);
 };
 exports.showproduct = showproduct;
-// update OrdersProducts by ID 
+// update OrdersProducts by ID
 const updateOrdersProducts = async (req, res, next) => {
     try {
         const updatethisproduct = await listofOrdersProducts.update(req.body);
@@ -73,7 +77,7 @@ const updateOrdersProducts = async (req, res, next) => {
 };
 // http://localhost:3000/updateOrdersProducts
 const updatebyId = (app) => {
-    app.patch('/updateOrdersProducts', updateOrdersProducts);
+    app.patch('/updateOrdersProducts', authenticate_1.default, updateOrdersProducts);
 };
 exports.updatebyId = updatebyId;
 // delete products by id
