@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteByid = exports.updatebyId = exports.showorder = exports.orderindex = exports.routes = exports.create = void 0;
 const express_1 = __importDefault(require("express"));
-const orders_1 = require("../modeles/orders");
+const orders_1 = require("../models/orders");
 const authenticate_1 = __importDefault(require("../middlewere/authenticate"));
 //create orders by router express
 const orderlist = new orders_1.listorder();
@@ -33,7 +33,7 @@ const index = async (_req, res) => {
 };
 //  http://localhost:3000/allorders
 const orderindex = (app) => {
-    app.get('/allorders', index);
+    app.get('/allorders', authenticate_1.default, index);
 };
 exports.orderindex = orderindex;
 // get order by id useing showByid
@@ -91,6 +91,6 @@ const deleteorder = async (req, res, next) => {
 };
 //  http://localhost:3000/deleteorderByid/:id
 const deleteByid = (app) => {
-    app.get('/deleteorderByid/:id', deleteorder);
+    app.get('/deleteorderByid/:id', authenticate_1.default, deleteorder);
 };
 exports.deleteByid = deleteByid;

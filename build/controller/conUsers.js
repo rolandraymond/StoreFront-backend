@@ -7,7 +7,7 @@ exports.sign_in = exports.create = void 0;
 const config_1 = __importDefault(require("../config"));
 const express_1 = __importDefault(require("express"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const client_1 = require("../modeles/client");
+const client_1 = require("../models/client");
 const authenticate_1 = __importDefault(require("../middlewere/authenticate"));
 // get all users
 const userList = new client_1.userlist();
@@ -77,7 +77,7 @@ const updateuser = async (req, res, next) => {
 };
 //http://localhost:3000/updateuser
 const updatebyId = (app) => {
-    app.patch('/updateuser', updateuser);
+    app.patch('/updateuser', authenticate_1.default, updateuser);
 };
 // delete user by deleteUser
 const deleteUSER = async (req, res, next) => {
@@ -95,7 +95,7 @@ const deleteUSER = async (req, res, next) => {
 };
 // http://localhost:3000/deleteUserByid/:id
 const deleteByid = (app) => {
-    app.get('/deleteUserByid/:id', deleteUSER);
+    app.get('/deleteUserByid/:id', authenticate_1.default, deleteUSER);
 };
 // sign in by username and password  to get token
 const sign_in = async (req, res, next) => {

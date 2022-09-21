@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProductByid = exports.updatebyId = exports.showproduct = exports.prodcutindex = exports.createproduct = exports.create = void 0;
-const orders_products_1 = require("../modeles/orders-products");
+const orders_products_1 = require("../models/orders-products");
 const authenticate_1 = __importDefault(require("../middlewere/authenticate"));
 const listofOrdersProducts = new orders_products_1.OrdersProductsList();
 const create = async (req, res, next) => {
@@ -96,6 +96,6 @@ const deleteOrdersProducts = async (req, res, next) => {
 };
 // http://localhost:3000/deleteOrdersProductsByid/:id
 const deleteProductByid = (app) => {
-    app.get('/deleteOrdersProductsByid/:id', deleteOrdersProducts);
+    app.get('/deleteOrdersProductsByid/:id', authenticate_1.default, deleteOrdersProducts);
 };
 exports.deleteProductByid = deleteProductByid;

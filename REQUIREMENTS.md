@@ -85,7 +85,7 @@ Response Body:{
 
 ### Update User By ID
 
-`PATSH` //http://localhost:3000/updateuser
+`PATSH` //http://localhost:3000/updateuser [token required]
 
 ```
 Request Data: {
@@ -113,7 +113,7 @@ Response Body:{
 
 ### Delete user by ID
 
-`GET` // http://localhost:3000/deleteUserByid/:id
+`GET` // http://localhost:3000/deleteUserByid/:id [token required]
 
 ```
 Response Body:{
@@ -150,7 +150,7 @@ Response Body:	{
 
 ### Get All products
 
-`GET` // http://localhost:3000/allproducts [token required]
+`GET` // http://localhost:3000/allproducts
 
 ```
     Response Body:	{
@@ -164,7 +164,7 @@ Response Body:	{
 
 ### GET Product BY Name
 
-`GET` // http://localhost:3000/getproductByname/:name [token required]
+`GET` // http://localhost:3000/getproductByname/:name
 
 ```
 Response Body: {
@@ -291,7 +291,7 @@ Response Body: {
 
 ### Delete Orders By ID
 
-`GET` // http://localhost:3000/deleteorderByid/:id
+`GET` // http://localhost:3000/deleteorderByid/:id [token required]
 
 ```
 Response Body: {
@@ -380,7 +380,7 @@ product_id:Number
 
 ### Delete By ID
 
-`GET` // http://localhost:3000/deleteOrdersProductsByid/:id
+`GET` // http://localhost:3000/deleteOrdersProductsByid/:id [token required]
 
 ```
 Response Body: {

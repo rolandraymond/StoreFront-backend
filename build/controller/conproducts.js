@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProductByname = exports.updatebyId = exports.showproduct = exports.prodcutindex = exports.createproduct = exports.create = void 0;
-const products_1 = require("../modeles/products");
+const products_1 = require("../models/products");
 const authenticate_1 = __importDefault(require("../middlewere/authenticate"));
 const listofproduct = new products_1.prodactlist();
 const create = async (req, res, next) => {
@@ -38,7 +38,7 @@ const index = async (_req, res, next) => {
 };
 // http://localhost:3000/allproducts
 const prodcutindex = (app) => {
-    app.get('/allproducts', authenticate_1.default, index);
+    app.get('/allproducts', index);
 };
 exports.prodcutindex = prodcutindex;
 //  get products by name
@@ -58,7 +58,7 @@ const showBYname = async (req, res, next) => {
 };
 // http://localhost:3000/getproductByname/:name
 const showproduct = (app) => {
-    app.get('/getproductByname/:name', authenticate_1.default, showBYname);
+    app.get('/getproductByname/:name', showBYname);
 };
 exports.showproduct = showproduct;
 // update product by id
@@ -96,6 +96,6 @@ const deleteproduct = async (req, res, next) => {
 };
 // http://localhost:3000/deleteproductByname/:name
 const deleteProductByname = (app) => {
-    app.get('/deleteproductByname/:name', deleteproduct);
+    app.get('/deleteproductByname/:name', authenticate_1.default, deleteproduct);
 };
 exports.deleteProductByname = deleteProductByname;
