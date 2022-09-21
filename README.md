@@ -67,7 +67,7 @@ First, create a `.env` file with all the required environment variables:
  POSTGRES_DB=ecommerce    // DB_DEV
  POSTGRES_USER=postgres
  POSTGRES_PASSWORD=code
- BCRYPT_pass=secret_password
- round_hash=10
- token_secret=users_secret_token
+ BCRYPT_PASS=secret_password
+ ROUND_HASH=10
+ TOKEN_SECRET=users_secret_token
 ```
