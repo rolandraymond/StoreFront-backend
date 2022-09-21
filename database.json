@@ -1,17 +1,17 @@
 {
     "defaultEnv": {
-        "ENV": "Convert_DB"
+        "ENV": "NODE_ENV"
     },
     "test": {
         "driver": "pg",
         "host": {
-            "ENV": "postgres_Host"
+            "ENV": "POSTGRES_HOST"
         },
         "database": {
-            "ENV": "POSTGRES_DB_test"
+            "ENV": "POSTGRES_DB_TEST"
         },
         "user": {
-            "ENV": "POSTGRES_user"
+            "ENV": "POSTGRES_USER"
         },
         "password": {
             "ENV": "POSTGRES_PASSWORD"
@@ -20,13 +20,13 @@
     "dev": {
         "driver": "pg",
         "host": {
-            "ENV": "postgres_Host"
+            "ENV": "POSTGRES_HOST"
         },
         "database": {
-            "ENV": "Postgres_DB"
+            "ENV": "POSTGRES_DB"
         },
         "user": {
-            "ENV": "POSTGRES_user"
+            "ENV": "POSTGRES_USER"
         },
         "password": {
             "ENV": "POSTGRES_PASSWORD"

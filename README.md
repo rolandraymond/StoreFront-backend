@@ -61,13 +61,13 @@ run server
 First, create a `.env` file with all the required environment variables:
 
 ```
- postgres_Host=localhost
- Convert_DB=test
- Postgres_DB_test=test  // test Database
- Postgres_DB=ecommerce   // dev Database
- POSTGRES_user=postgres
+ POSTGRES_HOST=localhost
+ NODE_ENV=test
+ POSTGRES_DB_TEST=test    // DB_TEST
+ POSTGRES_DB=ecommerce    // DB_DEV
+ POSTGRES_USER=postgres
  POSTGRES_PASSWORD=code
-BCRYPT_pass=secret_password
-round_hash=10
-token_secret=users_secret_token
+ BCRYPT_pass=secret_password
+ round_hash=10
+ token_secret=users_secret_token
 ```
