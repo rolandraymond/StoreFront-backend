@@ -127,7 +127,7 @@ message: "its work"
 
 ### create product
 
-`POST` // http://localhost:3000/createproduct
+`POST` // http://localhost:3000/createproduct [token required]
 
 ```
 Request Data:{
@@ -150,7 +150,7 @@ Response Body:	{
 
 ### Get All products
 
-`GET` // http://localhost:3000/allproducts
+`GET` // http://localhost:3000/allproducts [token required]
 
 ```
     Response Body:	{
@@ -164,7 +164,7 @@ Response Body:	{
 
 ### GET Product BY Name
 
-`GET` // http://localhost:3000/getproductByname/:name
+`GET` // http://localhost:3000/getproductByname/:name [token required]
 
 ```
 Response Body: {
@@ -180,7 +180,7 @@ Response Body: {
 
 ### Update Products
 
-`PATSH` // http://localhost:3000/updateproduct
+`PATSH` // http://localhost:3000/updateproduct [token required]
 
 ```
 Request Data:{
@@ -218,7 +218,7 @@ message: "its work "
 
 ### Ceate order
 
-`POST` // http://localhost:3000/createOrder
+`POST` // http://localhost:3000/createOrder [token required]
 
 ```
 Request Data: {
@@ -239,7 +239,7 @@ Response Body: {
 
 ### Get All Orders
 
-`GET` // http://localhost:3000/allorders
+`GET` // http://localhost:3000/allorders [token required]
 
 ```
 Response Body: {
@@ -254,7 +254,7 @@ Response Body: {
 
 ### Get Order By ID Useing ShowByid
 
-`GET` // http://localhost:3000/getorderByid/:id
+`GET` // http://localhost:3000/getorderByid/:id [token required]
 
 ```
 Request : (Required Authorization Header)
@@ -271,7 +271,7 @@ Response Body: {
 
 ### Update Orders By ID
 
-`PATSH` // http://localhost:3000/updateorder
+`PATSH` // http://localhost:3000/updateorder [token required]
 
 ```
 Request Data: {
@@ -306,7 +306,7 @@ Response Body: {
 
 ## Orders_products
 
-`POST` // create product http://localhost:3000/createOrdersProducts
+`POST` // create product http://localhost:3000/createOrdersProducts [token required]
 
 ```
 Request Data: {
@@ -327,7 +327,7 @@ product_id:Number
 
 ### get all data from Orders-Products TABLE
 
-GET // http://localhost:3000/allproducts
+GET // http://localhost:3000/allproducts [token required]
 
 ```
 Response Body: {
@@ -342,7 +342,7 @@ product_id:Number
 
 ### GEt Data By ID
 
-GET // http://localhost:3000/getOrdersProducts/:id
+GET // http://localhost:3000/getOrdersProducts/:id [token required]
 
 ```
 Response Body: {
@@ -358,7 +358,7 @@ product_id:Number
 
 ### Update BY id
 
-`PATSH` // http://localhost:3000/updateOrdersProducts
+`PATSH` // http://localhost:3000/updateOrdersProducts [token required]
 
 ```
 Request Data: {
