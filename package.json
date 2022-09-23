@@ -10,7 +10,7 @@
     "format": "prettier --write src/**/*.ts && npm run lint",
     "lint": "eslint src/**/*.ts --fix",
     "jasminetest": "npm run build && jasmine",
-    "test": "set Convert_DB=test&& tsc && db-migrate up  --ENV test && jasmine && db-migrate reset -C4",
+    "test": "set NODE_ENV=test&& tsc && db-migrate up  --ENV test && jasmine && db-migrate reset -C4",
     "createTable": "db-migrate up -c4",
     "deleteTable": "db-migrate down -c4",
     "retest": "npm run deleteTable && npm run createTable && npm run test "
